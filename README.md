@@ -21,33 +21,47 @@ Both `Manager` and `Tenant` should *inherit* methods from `Person`, and implemen
 
 ##### Relationships
 
-* `Manager` has many `buildings`
-* `Tenant` has a many `references` that are just `Person` instances with contact info. 
+* `Manager` has many `Buildings`
+* `Tenant` has a many `References` that are just `Person` instances with contact info. 
 
 #### Building
 
-A `Building` should always have a `Manager` before `tenants` can move in. All `Tenants` should have `two` references before moving in.
+A `Building` should always have a `Manager` before `Tenants` can move in. All `Tenants` should have `two` references before moving in.
 
 ##### Relationships
 
-* `Building` has many `Unit`s.
+* `Building` has many `Unit`s
+* `Building` has a `Manager`
 
 #### `Unit`
 
 * A `Unit` belongs to one `Building` and has one `Tenant`.
 
-## Getting Started
 
+## 1) Build out the apartment rental object model
+
+Take a look at `apartment rental object` templates in `src` folder. The ground work is done, you need to fill in the blanks. How?
 
 ### Run tests
+
+You get a complete set of tests, they are all written for you . Yeah!
 
 in project folder, run:
 	
 	npm test
 	
-They should all fail! 
+**They should all fail!** 
 
-Your first assignment is is to make them all pass!
+In true TDD fashion, your task is to make them all pass! 
+
+Remember, you can target individual tests by calling test files directly, for example:
+
+	mocha test/rental_property/building_test.js
+
+
+### Take a close look at the tests
+
+They tell you everything you need to implement apartment rental objects and their relationships. Check out how tests use `apartment rental objects`, like referencing properties and calling methods.
 
 
 ### Playing In Console
@@ -67,12 +81,13 @@ $ node
 > var manager = app.Manager();
 ```
 
-not much here, the objects are *empty*.
+not much here, the objects are *empty*. As you build out objects and tests turn green, come back to REPL and play around, try out properties and methods that you added, experiment.
 
 ============
 
-* Next start implementing inheritance for a `manager`
+* A good place to start is look for low hanging fruits, like adding properties to your objects, if you do it right, it should turn a bunch of test green right off the bat.
 
+* Then think about the relationships. For example, implementing inheritance for `Manager`
 
 You could do the following:
 
@@ -82,7 +97,7 @@ var person = require("./person");
 function Manager(name, contact) {
   this.name = name;
   this.contact = contact;
-  this.properties = [];
+  this.buildings = [];
 }
 
 // Inheriting
@@ -90,6 +105,7 @@ Manager.prototype = new Person();
 Manager.prototype.constructor = Manager;
 
 ```
+
 But the following makes use of a cool `call` method you can use with functions that avoids a bunch extra work.
 
 ```
@@ -101,7 +117,7 @@ function Manager(name, contact) {
   //  which will run the method 
   //  with a context.
   Person.call(this, name, contact);
-  this.properties = [];
+  this.buildings = [];
 }
 
 // Inheriting
@@ -110,31 +126,21 @@ Manager.prototype.constructor = Manager;
 
 ```
 
-* Note you might want to think about writing an `inherits` function as follows:
-
-`src/inherits`
-
-```
-// write the following
-var inherits = function(Child, Parent) {
-  Child.prototype = new Parent();
-  Child.prototype.constructor = Child;
-};
-
-module.exports = inherits;
-```
-
-you can then require the `inherits` module in each file that require inheritance.
+**etc .**
 
 
-## Writing AppartentRental app
+## 2) Write an Appartent Rental app
 
-We will use this as part of review opportunity for testing, so try to write as some tests for this project.
+Once all tests succeed, go and write an apartment rental app for the *Waterfront Tower* down the road. We understand that you strive to be web developers, yet the app your are going to build is a good old `command line interface` app. But good news, the ground work is already done. In the `src` folder, run:
 
-There are some `test` stubs for `test/people/`,  `test/property_types/`, and `test/unit.js`. To run these tests run the following in terminal.
+	node main.js
 
-* `mocha test/` to run the files in the `test/folder`, i.e. `unit_test.js` 
-* `mocha test/people/` to test the `people` subfolder
-* `mocha test/property_types/` to test the `property_types` subfolder
+**DEMO** (the app is not very user friendly ...)
+	
+Check out the *beautiful* user interface! Feature 1 to 5 are already implemented. Inspect `main.js` and take a look at how the menu is set up. Implement the missing menu functions. A good place to start is menu item 6 `Show available units`. It should be very similar to 5.  	
+
+	
+
+
 
 
