@@ -6,7 +6,7 @@
 In this application we have three main types of things we are dealing with.
 
 * `Person`
-* `Property`
+* `Building`
 * `Unit`
 
 
@@ -21,56 +21,53 @@ Both `Manager` and `Tenant` should *inherit* methods from `Person`, and implemen
 
 ##### Relationships
 
-* `Manager` has many `properties`
+* `Manager` has many `buildings`
 * `Tenant` has a many `references` that are just `Person` instances with contact info. 
 
-#### Property
+#### Building
 
-With `Property` we have three property types `Duplex`, `TownHouse`, and `ApartmentBuilding`. A generic `Property` should always have a `Manager` before `tenants` can move in. All `Tenants` should have `two` references before moving in.
+A `Building` should always have a `Manager` before `tenants` can move in. All `Tenants` should have `two` references before moving in.
 
 ##### Relationships
 
-The following should have the everything a `Property` has and also.
-
-* `Duplex` has only two `Unit`s.
-* `TownHouse` has only one `Unit`.
-* `ApartmentBuilding` has many `Unit`s.
-
+* `Building` has many `Unit`s.
 
 #### `Unit`
 
-There is only one type of `Unit`.
-
-* A `Unit` belongs to one `Property` and has one `Tenant`.
-
+* A `Unit` belongs to one `Building` and has one `Tenant`.
 
 ## Getting Started
 
+
+### Run tests
+
+in project folder, run:
+	
+	npm test
+	
+They should all fail! 
+
+Your first assignment is is to make them all pass!
+
+
 ### Playing In Console
 
-`Locus` is fine, but let's try to avoid it in this application.
-
-* Open the node REPL and `require('./src/main.js')`
+* Open the node REPL and `require('./src/app.js')`
 
 ```
 $ node
-> var app = require('./src/main.js')
+> var app = require('./src/app.js')
 ```
 
-* Play with a `Person` object.
+* Create a few objects and inspect them.
 
 ```
-> var Person = app.Person;
-> var john = new Person("john doe", "123-4567");
-> john.contact
-"123-4567"
+> var person = app.Person();
+> var building = app.Building();
+> var manager = app.Manager();
 ```
-============
 
-###  Play with Other Modules
-
-You can do the same thing to play with `app.Property`, `app.Manager`, `app.Tenant`, `app.ApartmentBuilding`, et cetera.
-
+not much here, the objects are *empty*.
 
 ============
 
@@ -130,8 +127,7 @@ module.exports = inherits;
 you can then require the `inherits` module in each file that require inheritance.
 
 
-
-## Writing Tests
+## Writing AppartentRental app
 
 We will use this as part of review opportunity for testing, so try to write as some tests for this project.
 
