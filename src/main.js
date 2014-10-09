@@ -56,15 +56,10 @@ menu.addItem('Add unit',
 menu.addItem('Show all units', 
   function() {
     for(var i = building.units.length - 1; i >= 0; i--) {
-      var currTenant = building.units[i].available();
-      console.log(" num: " + building.units[i].number + 
+      console.log(" tenant: " + building.units[i].tenant +
+      			  " num: " + building.units[i].number + 
                   " sqft: " + building.units[i].sqft +
                   " rent: $" + building.units[i].rent);
-      if(currTenant) {
-        console.log(" tenant: " + currTenant.name);
-      } else {
-        console.log(" Unit is available.");
-      }
     }
   }  
 );
