@@ -1,4 +1,4 @@
-# ApartmentRental App
+# Apartmen tRental App
 ## Working with Relationships and Inheritance
 
 ### Description
@@ -87,7 +87,7 @@ $ node
 
 not much here, the objects are *empty*. As you build out objects and tests turn green, come back to REPL and play around, try out properties and methods that you added, experiment.
 
-============
+### Where to start
 
 * A good place to start is look for low hanging fruits, like adding properties to your objects, if you do it right, it should turn a bunch of test green right off the bat.
 
