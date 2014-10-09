@@ -40,6 +40,10 @@ A `Building` should always have a `Manager` before `Tenants` can move in. All `T
 
 ## 1) Build out the apartment rental object model
 
+In project folder, run:
+
+	npm install
+	
 Take a look at `apartment rental object` templates in `src` folder. The ground work is done, you need to fill in the blanks. How?
 
 ### Run tests
