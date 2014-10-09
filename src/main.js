@@ -31,10 +31,11 @@ menu.addItem('Show tenants:',
   function() {
     for (var i = 0; i <= people.length; i++) {
       if (people[i] instanceof app.Tenant){
-        console.log(people[i].name + " " + people[i].contact);
+        console.log("\n" + people[i].name + " " + people[i].contact);
         var references = people[i].references;
+        if(!references) {continue;}
         for (var j = references.length - 1; j >= 0; j--) {
-          console.log("Ref: " + references[j].name + " " + references[j].contact);
+          console.log("-> Reference: " + references[j].name + " " + references[j].contact);
         };
       }
     }
@@ -55,13 +56,12 @@ menu.addItem('Add unit',
 menu.addItem('Show all units', 
   function() {
     for(var i = building.units.length - 1; i >= 0; i--) {
-      console.log( i + 
-                  " tenant:" + building.units[i].tenant +
-                  " num:" + building.units[i].number + 
-                  " sqft:" + building.units[i].sqft +
+      console.log(" tenant: " + building.units[i].tenant +
+      			  " num: " + building.units[i].number + 
+                  " sqft: " + building.units[i].sqft +
                   " rent: $" + building.units[i].rent);
     }
-  }
+  }  
 );
 
 menu.addItem('(implement me) Show available units', 
