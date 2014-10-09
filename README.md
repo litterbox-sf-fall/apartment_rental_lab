@@ -1,4 +1,4 @@
-# Apartmen tRental App
+# ApartmentRental App
 ## Working with Relationships and Inheritance
 
 ### Description
@@ -21,7 +21,7 @@ Both `Manager` and `Tenant` should *inherit* methods from `Person`, and implemen
 
 ##### Relationships
 
-* `Manager` has many `Buildings`
+* `Manager` has many `Buildings`.
 * `Tenant` has a many `References` that are just `Person` instances with contact info. 
 
 #### Building
@@ -30,21 +30,17 @@ A `Building` should always have a `Manager` before `Tenants` can move in. All `T
 
 ##### Relationships
 
-* `Building` has many `Unit`s
-* `Building` has a `Manager`
+* `Building` has many `Unit`s. 
+* `Building` has a `Manager`. A `Tenant` may not be the building manager. 
 
 #### `Unit`
 
-* A `Unit` belongs to one `Building` and has one `Tenant`.
+* A `Unit` belongs to one `Building` and has one `Tenant`. As a rule, `Managers` are not allowed to live in the `Building`.
 
 
-## 1) Build out the apartment rental object model
+## Phase I: Build out the apartment rental object model
 
-In project folder, run:
-
-	npm install
-	
-Take a look at `apartment rental object` templates in `src` folder. The ground work is done, you need to fill in the blanks. How?
+Take a look at `apartment rental object` code stubs in `src` folder. The ground work is done, you need to fill in the blanks.
 
 ### Run tests
 
@@ -58,7 +54,7 @@ in project folder, run:
 
 In true TDD fashion, your task is to make them all pass! 
 
-Remember, you can target individual tests by calling test files directly, for example:
+You can target individual tests by calling test files directly, for example:
 
 	mocha test/rental_property/building_test.js
 
@@ -87,7 +83,7 @@ $ node
 
 not much here, the objects are *empty*. As you build out objects and tests turn green, come back to REPL and play around, try out properties and methods that you added, experiment.
 
-### Where to start?
+============
 
 * A good place to start is look for low hanging fruits, like adding properties to your objects, if you do it right, it should turn a bunch of test green right off the bat.
 
@@ -133,15 +129,17 @@ Manager.prototype.constructor = Manager;
 **etc .**
 
 
-## 2) Write an Appartent Rental app
+## Phase II: Write Appartent Rental app
 
-Once all tests succeed, go and write an apartment rental app for the *Waterfront Tower* down the road. We understand that you strive to be web developers, yet the app your are going to build is a good old `command line interface` app. But good news, the ground work is already done. In the `src` folder, run:
+Once all tests succeed, go and write an apartment rental app for the *Waterfront Tower* down the road. We understand that you strive to be web developers, yet the app your are going to build is a good old `command line interface` app. But good news, again, the ground work is already done. In the `src` folder, run:
 
 	node main.js
 
 **DEMO** (the app is not very user friendly ...)
 	
-Check out the *beautiful* user interface! Feature 1 to 5 are already implemented. Inspect `main.js` and take a look at how the menu is set up. Implement the missing menu functions. A good place to start is menu item 6 `Show available units`. It should be very similar to 5.  	
+Check out the *beautiful* user interface! Feature 1 to 5 are already implemented. Inspect `main.js` and take a look at how the menu is set up. Implement the missing menu functions. A good place to start is menu item 6 `Show available units`. It should be very similar to 5. 
+
+*Hint:* You will find yourself iterating over arrays quite a lot. Why not use the `Iterators` module that you built this week? 	
 
 	
 
