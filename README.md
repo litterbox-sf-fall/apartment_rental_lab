@@ -76,9 +76,9 @@ $ node
 * Create a few objects and inspect them.
 
 ```
-> var person = app.Person();
-> var building = app.Building();
-> var manager = app.Manager();
+> var person = new app.Person();
+> var building = new app.Building();
+> var manager = new app.Manager();
 ```
 
 not much here, the objects are *empty*. As you build out objects and tests turn green, come back to REPL and play around, try out properties and methods that you added, experiment.
