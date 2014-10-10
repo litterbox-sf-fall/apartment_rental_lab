@@ -1,4 +1,5 @@
 "use strict"
+var _ = require('underscore');
 
 function Building(address) {
   this.address = address;
@@ -53,6 +54,36 @@ Building.prototype.rentedUnits = function(){
     return !unit.available();
   });
 };
+
+Building.prototype.totalSqftRented = function(){
+  // returns totale sqft rented
+  var runningTotal = 0;
+
+  var sum =  _.reduce(this.units, 
+              function(runningTotal, aUnit){
+                if (!(aUnit.available())){
+                  return runningTotal + aUnit.sqft;
+                } else
+                  return runningTotal;   
+              }, 
+              0);
+  return (sum == undefined) ? 0 : sum;
+};
+
+Building.prototype.totalYearlyIncome = function(){
+  // returns totale sqft rented
+  var runningTotal = 0;
+  var sum = _.reduce(this.units, 
+              function(runningTotal, aUnit){
+                if (!(aUnit.available()))
+                  return runningTotal + aUnit.rent;
+                else
+                  return runningTotal;   
+              }, 
+              0);
+  return (sum == undefined) ? 0 : sum * 12;
+};
+
 
 
 module.exports = Building;
